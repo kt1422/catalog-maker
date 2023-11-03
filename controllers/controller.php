@@ -32,12 +32,14 @@ function logout(){
 if(isset($_POST['generate'])){
     $header=$_POST['header'];
     $pager=$_POST['pager'];
-    $image=$_FILES['image'];
+    $items=$_POST['items'];
+    
     
     $uploaddir = './uploads/';
     $files = $_FILES['image'];
     $file_count = count($files['name']);
-    $url = [];
+    $parameter = "header=".$header."&count=".$file_count;
+
     for($i = 0; $i < $file_count; $i++) {
         $filename = $files['name'][$i];
         $tmp = $files['tmp_name'][$i];
@@ -46,12 +48,14 @@ if(isset($_POST['generate'])){
         $uploaded_file = $filename;
         // new filepath
         $filepath = $uploaddir . $uploaded_file;
-        $url[] = $filepath;
+        $parameter.="&item_name".$i."=".$items[$i]."&"."item_path".$i."=.".$filepath;
         // move the file to the upload dir
         move_uploaded_file($tmp, $filepath);
     }
-
     
+    echo '<script>
+        window.open("./views/generate_pdf.php?'.$parameter.'", "_blank"); 
+        </script>';
 }
 
 ?>

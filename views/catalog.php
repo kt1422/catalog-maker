@@ -30,7 +30,7 @@
             $("#imgfile").append('<div class="d-flex gap-3 mb-3 images">'+
             '<div><img class="thumbnail" src="'+URL.createObjectURL(files[i])+'"></div>'+
             '<div class="col"><label for="img'+(i+1)+'" class="form-label">Image '+(i+1)+': </label>'+
-            '<input type="text" class="form-control" id="img'+(i+1)+'" name="items[]" value="'+files[i].name+'" placeholder="Enter item name"></div>'+
+            '<input type="text" class="form-control" id="img'+(i+1)+'" name="items[]" value="'+(files[i].name).slice(0, -4)+'" placeholder="Enter item name"></div>'+
             '</div>');
         }
         if(files.length > 0){
