@@ -38,7 +38,7 @@ if(isset($_POST['generate'])){
     $uploaddir = './uploads/';
     $files = $_FILES['image'];
     $file_count = count($files['name']);
-    $parameter = "header=".$header."&count=".$file_count;
+    $parameter = "header=".$header."&count=".$file_count."&page=".$pager;
 
     for($i = 0; $i < $file_count; $i++) {
         $filename = $files['name'][$i];
