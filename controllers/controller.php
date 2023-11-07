@@ -1,10 +1,10 @@
 <?php
+session_start();
 
 if(isset($_POST['login'])){
     $username=$_POST['username'];
     $password=$_POST['password'];
     if($username=="admin" && $password=="admin"){
-        session_start();
         $_SESSION["user"] = $username;
         echo "<script>
         window.location.href='./index.php?page=home';
@@ -20,7 +20,6 @@ if(isset($_POST['login'])){
 function logout(){
     $action=$_GET['action'];
     if($action=="logout"){
-        session_start();
         unset($_SESSION["user"]);
         echo "<script>
         window.location.href='./index.php?page=login';
@@ -34,6 +33,9 @@ if(isset($_POST['generate'])){
     $pager=$_POST['pager'];
     $items=$_POST['items'];
     
+    if(!is_dir('./uploads/')){
+        mkdir("./uploads/", 0777, true);
+    }
     
     $uploaddir = './uploads/';
     $files = $_FILES['image'];

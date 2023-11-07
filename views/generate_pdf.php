@@ -79,15 +79,15 @@ $pdf->AddPage();
 $col = 0; $row = 0; $item = 0;
 for($i=0; $i<$_GET['count']; $i++){
     $pdf->centreImage($_GET['item_path'.$i],7+($col*70),7+$row);
-    $pdf->Ln(55.5);
+    $pdf->Ln(55);
     $pdf->SetX($col*70);
     $pdf->Cell(70,5,$_GET['item_name'.$i],0,0,'C');
-    $pdf->Ln(-55.5);
+    $pdf->Ln(-55);
     $col++; $item++;
     if($col==3){
         $col=0;
-        $row+=67;
-        $pdf->Ln(67);
+        $row+=66;
+        $pdf->Ln(66);
     }
     if($item==12){
         $row = 0;
